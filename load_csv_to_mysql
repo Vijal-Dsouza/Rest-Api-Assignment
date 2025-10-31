@@ -2,15 +2,12 @@ import os
 import pandas as pd
 from sqlalchemy import create_engine
 
-# --- Database connection ---
 conn = "mysql+mysqlconnector://root:root@localhost:3306/northwind?use_pure=True"
 engine = create_engine(conn)
 
-# --- Path where CSVs are stored ---
 base_path = r"C:\Users\vijal\RestAPI_Assignment\Northwind_database_csv 1\Northwind_database_csv"
 
 
-# --- CSV to table mapping ---
 csv_files = {
     "categories": "categories.csv",
     "customers": "customers.csv",
@@ -25,7 +22,6 @@ csv_files = {
     "territories": "territories.csv",
 }
 
-# --- Load each CSV ---
 for table, file in csv_files.items():
     file_path = os.path.join(base_path, file)
     print(f"Loading {file} into table `{table}` ...")

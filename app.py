@@ -3,7 +3,7 @@ from db_config import app, db
 from models import Customer, Product, Order
 from datetime import datetime
 
-# ---------------------- Customers ----------------------
+# Customers
 @app.route('/customers', methods=['POST'])
 def add_customer():
     data = request.json
@@ -33,7 +33,7 @@ def get_customer(id):
     return jsonify({col.name: getattr(customer, col.name) for col in customer.__table__.columns})
 
 
-# ---------------------- Products ----------------------
+# Products
 @app.route('/products', methods=['POST'])
 def add_product():
     data = request.json
@@ -63,7 +63,7 @@ def get_product(id):
     return jsonify({col.name: getattr(product, col.name) for col in product.__table__.columns})
 
 
-# ---------------------- Orders ----------------------
+# Orders
 @app.route('/orders', methods=['POST'])
 def add_order():
     data = request.json
@@ -94,7 +94,7 @@ def get_order(id):
     return jsonify({col.name: getattr(order, col.name) for col in order.__table__.columns})
 
 
-# ---------------------- Order History ----------------------
+# Order History
 @app.route('/order_history/<customer_id>', methods=['GET'])
 def get_order_history(customer_id):
     orders = Order.query.filter_by(CustomerID=customer_id).all()
